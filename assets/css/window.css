@@ -218,6 +218,22 @@
   .window__body {
     padding: 24px 24px;
   }
+
+  /* En desktop la ilustración flota a la derecha del título con
+     position:absolute (reservando 200px fijos vía padding-right). En
+     móvil eso deja muy poco espacio para el texto y la imagen termina
+     tapándolo (bug reportado). Acá la sacamos del posicionamiento
+     absoluto para que fluya normal — como es el primer elemento del
+     HTML, queda arriba del título, centrada y más chica. */
+  .article-header {
+    padding-right: 0;
+  }
+
+  .article-header__image {
+    position: static;
+    width: 140px;
+    margin: 0 auto;
+  }
 }
 
 /* =============================================
