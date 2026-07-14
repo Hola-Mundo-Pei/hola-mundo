@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El equipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body>
+
+  <!--
+    NOTA: al igual que que-es.html, esta ventana se integrará como overlay
+    flotante sobre index.html cuando trabajemos el JS.
+  -->
+  <div class="desktop-backdrop">
+    <section class="window" aria-label="El equipo">
+
+      <!-- Barra de título estilo navegador -->
+      <div class="window__titlebar">
+        <div class="window__menu">
+          <img src="assets/img/icon/window-icon-menu.png" alt="">
+          <img src="assets/img/icon/icon-chevron-down.png" alt="">
+        </div>
+
+        <div class="window__address">
+          <span class="window__address-title">Qué es hola mundo</span>
+        </div>
+
+        <div class="window__actions">
+          <a href="index.html" class="window__action-btn" aria-label="Minimizar">
+            <img src="assets/img/icon/minimizar.svg" alt="">
+          </a>
+          <button class="window__action-btn" aria-label="Maximizar">
+            <img src="assets/img/icon/ampliar.svg" alt="">
+          </button>
+          <a href="index.html" class="window__action-btn" aria-label="Cerrar ventana">
+            <img src="assets/img/icon/cerrar.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <!-- Cuerpo / contenido -->
+      <div class="window__body window__body--equipo">
+        <h1 class="article-header__title">Voluntarios</h1>
+        <div class="team-banner">
+          <img src="assets/img/equipo/team-voluntarios.png" alt="Foto del equipo de voluntarios">
+        </div>
+
+        <h1 class="article-header__title">Talleristas</h1>
+        <div class="team-banner">
+          <img src="assets/img/equipo/team-talleristas.png" alt="Foto del equipo de talleristas">
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

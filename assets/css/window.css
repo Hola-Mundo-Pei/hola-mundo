@@ -1,0 +1,726 @@
+/* =============================================
+   Window chrome — estilo "ventana de navegador"
+   Compartido por TODAS las páginas excepto Home,
+   ya que cada página se simula como una ventana
+   emergente flotando sobre el escritorio (index.html)
+   ============================================= */
+
+/* =============================================
+   Overlay de ventanas sobre index.html (Opción C:
+   fetch + inyección). El contenido de cada página
+   se copia dentro de #window-overlay-slot mediante JS.
+   Ver assets/js/main.js.
+   ============================================= */
+
+:root {
+  /* JS actualiza este valor con el alto real del navbar amarillo */
+  --header-height: 96px;
+}
+
+.window-overlay {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+
+  /* Fondo borroso: se ve el escritorio (íconos, fondo azul) difuminado
+     detrás de la ventana. El navbar amarillo queda AFUERA de esta capa
+     (empieza en top: var(--header-height)), así que siempre se ve nítido. */
+  background-color: rgba(20, 20, 15, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Fade in/out del overlay completo */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.window-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s linear 0s;
+}
+
+.window-overlay[hidden] {
+  display: none;
+}
+
+.window-overlay__slot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* La .window inyectada hereda su propio estilo de window.css;
+   aquí controlamos el límite de alto Y la animación de entrada/salida
+   (fade + leve escala) de la ventana en sí. */
+.window-overlay .window {
+  max-height: calc(100vh - var(--header-height) - 80px);
+  opacity: 0;
+  transform: scale(0.97) translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.window-overlay.is-open .window {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ---- Estado "maximizado": ocupa todo el espacio debajo del navbar,
+   el navbar amarillo se mantiene siempre visible arriba. ---- */
+.window-overlay.is-maximized {
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.window-overlay.is-maximized .window {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .window-overlay {
+    padding: 12px;
+  }
+
+  .window-overlay .window {
+    max-height: calc(100vh - var(--header-height) - 24px);
+  }
+}
+
+/* ---- Fondo de "escritorio" mientras la ventana no está
+   integrada aún vía JS sobre index.html ---- */
+.desktop-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: var(--color-blue);
+}
+
+/* ---- Contenedor de la ventana ---- */
+.window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 972px;
+  max-height: 90vh;
+  background-color: #fff;
+  border: 1px solid #9ea096;
+  border-radius: 4px;
+  box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* ---- Barra de título (verde) ---- */
+.window__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 4px 2px;
+  background-color: var(--color-green);
+  border-bottom: 1px solid #bfc1b7;
+  backdrop-filter: blur(32px);
+  flex-shrink: 0;
+}
+
+.window__menu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 46px;
+  height: 28px;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.window__menu img {
+  width: 20px;
+  height: 20px;
+}
+
+.window__address {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.window__address-title {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-dark);
+  white-space: nowrap;
+}
+
+.window__address-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.window__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding-right: 6px;
+}
+
+.window__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 27px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.window__action-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.window__action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---- Cuerpo de la ventana (contenido, con scroll propio) ---- */
+.window__body {
+  width: 100%;
+  flex: 1;
+  min-height: 0; /* clave: permite que overflow-y:auto funcione dentro de un contenedor flex */
+  padding: 32px 63px;
+  overflow-y: auto;
+}
+
+@media (max-width: 700px) {
+  .window__body {
+    padding: 24px 24px;
+  }
+}
+
+/* =============================================
+   Contenido tipo artículo (usado dentro de .window__body)
+   ============================================= */
+
+.article-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 200px;
+  margin-bottom: 24px;
+}
+
+.article-header__image {
+  position: absolute;
+  top: 0;
+  right: -16px;
+  width: 200px;
+  height: auto;
+}
+
+.article-header__title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.75px;
+  line-height: 1.2;
+  color: #111827;
+  margin: 0;
+}
+
+.article-header__desc {
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #374151;
+  margin: 0;
+}
+
+.article-section {
+  margin-bottom: 24px;
+}
+
+.article-section__title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #111827;
+  margin: 0 0 12px;
+}
+
+.article-section p {
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #374151;
+  margin: 0 0 12px;
+}
+
+.article-section p:last-child {
+  margin-bottom: 0;
+}
+
+.article-section strong {
+  font-weight: 500;
+}
+
+/* =============================================
+   Acordeón "Contenido"
+   ============================================= */
+
+.accordion-title {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.45px;
+  color: #111827;
+  margin: 0 0 12px;
+}
+
+.accordion {
+  border: 1px solid #bfc1b7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.accordion__item {
+  border-top: 1px solid #bfc1b7;
+  background-color: #fff;
+}
+
+.accordion__item:first-child {
+  border-top: none;
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  gap: 52px;
+  padding: 12px 32px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion__title-group {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.accordion__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.accordion__label {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.accordion__chevron {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.accordion__item[open] .accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.accordion__content {
+  padding: 0 32px 16px calc(32px + 24px + 12px);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+/* =============================================
+   Página "El equipo"
+   ============================================= */
+
+.window__body--equipo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.window__body--equipo .article-header__title {
+  padding-right: 0;
+  margin-bottom: 0;
+}
+
+.team-banner {
+  width: 100%;
+  aspect-ratio: 886 / 301;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.team-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Variante de header sin imagen lateral (ej. Dona) ---- */
+.article-header--no-image {
+  padding-right: 0;
+}
+
+/* =============================================
+   Página "Dona"
+   ============================================= */
+
+.donate-method {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.donate-method__title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #111827;
+  margin: 0;
+}
+
+.donate-method__image {
+  width: 181px;
+  height: 184px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.donate-method__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.donate-method__phone {
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+}
+
+.btn--small {
+  min-height: 24px;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--color-black);
+}
+
+.btn--small:hover {
+  box-shadow: 4px 4px 0 var(--color-black);
+}
+
+/* =============================================
+   Página "Merch" — grilla de productos
+   (mismo patrón visual que .donate-method de Dona)
+   ============================================= */
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 181px;
+}
+
+.product-card__title {
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #111827;
+  margin: 0;
+}
+
+.product-card__image {
+  width: 181px;
+  height: 184px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-card__price {
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: #374151;
+}
+
+/* =============================================
+   Página "Fotos" — reproductor de casetes
+   ============================================= */
+
+.fotos-tagline {
+  font-family: var(--font-main);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+}
+
+.fotos-player {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 52px;
+  margin-top: 24px;
+}
+
+/* ---- Lista de casetes ----
+   flex: 0 1 340px → NO crece (así ya no le compite espacio al TV cuando
+   sobra), pero sí puede encogerse un poco en pantallas angostas. */
+.cassette-list {
+  display: flex;
+  flex: 0 1 340px;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  max-width: 420px;
+}
+
+.cassette-item__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #9ea096;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* ---- TV / reproductor ----
+   El marco (fotos-tv-frame.png) cubre SOLO la carcasa + pantalla (sin la
+   bandeja de abajo). La foto se coloca DETRÁS de él, encajando en el
+   hueco de pantalla. La bandeja (casete insertado + controles) es un
+   bloque CSS aparte, real y dinámico — no depende de ninguna imagen. */
+.fotos-tv {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 385px; /* crece para llenar el resto; el "0" evita que se encoja */
+  width: 385px; /* tamaño base/mínimo de referencia */
+  max-width: 600px; /* tope para que no quede gigante en pantallas muy anchas */
+}
+
+.fotos-tv__screen-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.fotos-tv__frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Porcentajes calculados sobre el recorte SIN bandeja (solo carcasa+pantalla) */
+.fotos-tv__photo {
+  position: absolute;
+  left: 5.8%;
+  right: 5.7%;
+  top: 5.8%;
+  bottom: 2.6%;
+  overflow: hidden;
+  background-color: #000;
+  z-index: 1;
+}
+
+.fotos-tv__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Bandeja: casete insertado + controles (HTML/CSS real) ----
+   Se usa en DOS lugares: dentro del TV (bandeja "activa", con los 3
+   controles ◀ ■ ▶) y en cada fila de la lista de casetes (modificador
+   --compact, con un solo botón ▶ que selecciona esa sesión). */
+.fotos-tv__tray {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 8px 10px;
+  background-color: #2b2b28;
+  border-radius: 8px;
+}
+
+/* Variante usada en la lista: sin el margen superior (el gap de
+   .cassette-list ya separa las filas) y con un resalte cuando está activa. */
+.fotos-tv__tray--compact {
+  margin-top: 0;
+  width: 100%;
+  transition: box-shadow 0.15s ease;
+}
+
+.fotos-tv__tray--compact.is-active {
+  box-shadow: 0 0 0 2px var(--color-black);
+}
+
+.fotos-tv__slot {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 12px;
+  background-color: #fdfdf8;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.fotos-tv__slot-label {
+  flex: 1;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fotos-tv__slot-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #2226f7 0%, #eb9d2a 50%, #40d173 100%);
+}
+
+.fotos-tv__controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.fotos-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background-color: #3a3a36;
+  color: #e5e5df;
+  transition: background-color 0.15s ease;
+}
+
+.fotos-control svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fotos-control:hover {
+  background-color: #4c4c46;
+}
+
+.fotos-control--decorative {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.fotos-control--decorative:hover {
+  background-color: #3a3a36;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 800px) {
+  .fotos-player {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cassette-list {
+    width: 100%;
+    max-width: 385px;
+  }
+
+  .fotos-tv {
+    width: 100%;
+    max-width: 385px;
+  }
+}
+
+/* ---- Pie de la ventana: botón de acción ---- */
+.window__footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 24px 0 0;
+}

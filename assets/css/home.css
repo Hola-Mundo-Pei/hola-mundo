@@ -1,0 +1,127 @@
+/* =============================================
+   Home — Estilos específicos
+   ============================================= */
+
+/* El body de esta página (marcado con .page-home) ocupa exactamente el
+   alto de la pantalla: header + hero se reparten el espacio con flexbox,
+   en vez de que el hero calcule su alto con un "calc(100vh - Npx)" fijo
+   que fácilmente se desincroniza y obliga a hacer scroll. */
+body.page-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-hero {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-height: 0; /* permite que flex calcule la altura real disponible, sin desbordar */
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-blue);
+  overflow: hidden;
+}
+
+/* Patrón de líneas decorativo de fondo */
+.home-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ilustración central (logo grande) */
+.home-hero__illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(440px, 60vw);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.home-hero__illustration img {
+  width: 100%;
+  height: auto;
+}
+
+/* Fila principal: navegación ilustrada izquierda + donar derecha */
+.home-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+  padding: 40px 60px;
+  gap: 24px;
+}
+
+.home-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.home-hero__donate {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .home-hero__content {
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 24px;
+    gap: 48px;
+  }
+
+  .home-nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    row-gap: 32px;
+    column-gap: 24px;
+  }
+
+  /* En desktop la ilustración se centra con position:absolute (queda
+     detrás/entre los íconos a propósito). En móvil eso provoca que quede
+     ENCIMA del grid de íconos sin importar cuántos haya, tapándolos
+     (bug reportado). Acá la sacamos del posicionamiento absoluto para que
+     vuelva a fluir en el documento — como es el primer elemento dentro
+     de .home-hero, queda arriba del todo, sin pisar nada. */
+  .home-hero__illustration {
+    position: static;
+    transform: none;
+    width: min(200px, 55vw);
+    margin: 16px auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero__donate .icon-nav__label,
+  .home-nav-list .icon-nav__label {
+    min-width: 80px;
+    font-size: 14px;
+  }
+
+  /* El navbar de solo-ícono ya es compacto (logo + 3 botones de 44px),
+     así que no necesita apilarse — solo achicamos un poco el gap para
+     pantallas muy angostas. */
+  .site-header {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .site-header__icon-nav {
+    gap: 10px;
+  }
+}

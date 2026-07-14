@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hola Mundo Merch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body>
+
+  <!--
+    NOTA: al igual que las otras páginas, esta ventana se integrará como
+    overlay flotante sobre index.html cuando trabajemos el JS.
+  -->
+  <div class="desktop-backdrop">
+    <section class="window" aria-label="Hola Mundo Merch">
+
+      <!-- Barra de título estilo navegador -->
+      <div class="window__titlebar">
+        <div class="window__menu">
+          <img src="assets/img/icon/window-icon-menu.png" alt="">
+          <img src="assets/img/icon/icon-chevron-down.png" alt="">
+        </div>
+
+        <div class="window__address">
+          <span class="window__address-title">Qué es hola mundo</span>
+        </div>
+
+        <div class="window__actions">
+          <a href="index.html" class="window__action-btn" aria-label="Minimizar">
+            <img src="assets/img/icon/minimizar.svg" alt="">
+          </a>
+          <button class="window__action-btn" aria-label="Maximizar">
+            <img src="assets/img/icon/ampliar.svg" alt="">
+          </button>
+          <a href="index.html" class="window__action-btn" aria-label="Cerrar ventana">
+            <img src="assets/img/icon/cerrar.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <!-- Cuerpo / contenido -->
+      <div class="window__body">
+        <article>
+
+          <header class="article-header article-header--no-image">
+            <h1 class="article-header__title">Hola Mundo Merch</h1>
+            <p class="article-header__desc">Más que merch, <strong>una forma de apoyar</strong> ideas, talento joven y futuros posibles. Diseños creados para quienes creen en el poder de aprender, crear y compartir.</p>
+          </header>
+
+          <section class="article-section">
+            <div class="product-grid">
+
+              <div class="product-card">
+                <h2 class="product-card__title">Libreta</h2>
+                <div class="product-card__image">
+                  <img src="assets/img/merch/merch-libreta.png" alt="Libreta Hola Mundo">
+                </div>
+                <div class="product-card__row">
+                  <span class="product-card__price">$ 30.000</span>
+                  <button class="btn btn--primary btn--small">Donar</button>
+                </div>
+              </div>
+
+              <div class="product-card">
+                <h2 class="product-card__title">Stickers tecla</h2>
+                <div class="product-card__image">
+                  <img src="assets/img/merch/merch-stickers-tecla.png" alt="Stickers tecla Hola Mundo">
+                </div>
+                <div class="product-card__row">
+                  <span class="product-card__price">$ 3.000</span>
+                  <button class="btn btn--primary btn--small">Donar</button>
+                </div>
+              </div>
+
+              <div class="product-card">
+                <h2 class="product-card__title">Sticker hola</h2>
+                <div class="product-card__image">
+                  <img src="assets/img/merch/merch-stickers-hola.png" alt="Sticker hola Hola Mundo">
+                </div>
+                <div class="product-card__row">
+                  <span class="product-card__price">$ 5.000</span>
+                  <button class="btn btn--primary btn--small">Donar</button>
+                </div>
+              </div>
+
+              <div class="product-card">
+                <h2 class="product-card__title">Camisetas</h2>
+                <div class="product-card__image">
+                  <img src="assets/img/merch/merch-camisetas.png" alt="Camisetas Hola Mundo">
+                </div>
+                <div class="product-card__row">
+                  <span class="product-card__price">$ 5.000</span>
+                  <button class="btn btn--primary btn--small">Donar</button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </article>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

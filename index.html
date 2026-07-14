@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hola Mundo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- window.css se necesita aquí también: las páginas que se abren como
+       "ventana" se inyectan DENTRO de index.html, así que sus estilos
+       deben estar cargados de antemano. -->
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body class="page-home">
+
+  <!-- El navbar vive en partials/navbar.html y se inyecta aquí vía fetch
+       (ver assets/js/main.js → loadNavbar()). Así queda separado del
+       resto del home, más fácil de mantener si en el futuro se reutiliza. -->
+  <div id="navbar-slot"></div>
+
+  <main class="home-hero">
+    <img class="home-hero__bg" src="assets/img/bg-lines.png" alt="" aria-hidden="true">
+
+    <div class="home-hero__illustration">
+      <img src="assets/img/illustration-group.png" alt="Ilustración Hola Mundo">
+    </div>
+
+    <div class="home-hero__content">
+      <ul class="home-nav-list">
+        <li>
+          <a href="que-es.html" data-window="que-es.html" class="icon-nav">
+            <span class="icon-nav__icon">
+              <img src="assets/img/icon/icon-que-es.png" alt="">
+            </span>
+            <span class="icon-nav__label">Qué es Hola mundo</span>
+          </a>
+        </li>
+        <li>
+          <a href="merch.html" data-window="merch.html" class="icon-nav">
+            <span class="icon-nav__icon">
+              <img src="assets/img/icon/icon-merch.png" alt="">
+            </span>
+            <span class="icon-nav__label">Merch</span>
+          </a>
+        </li>
+        <li>
+          <a href="equipo.html" data-window="equipo.html" class="icon-nav">
+            <span class="icon-nav__icon">
+              <img src="assets/img/icon/icon-equipo.png" alt="">
+            </span>
+            <span class="icon-nav__label">El equipo</span>
+          </a>
+        </li>
+        <li>
+          <a href="fotos.html" data-window="fotos.html" class="icon-nav">
+            <span class="icon-nav__icon">
+              <img src="assets/img/icon/icon-fotos.png" alt="">
+            </span>
+            <span class="icon-nav__label">Fotos</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="home-hero__donate">
+        <a href="dona.html" data-window="dona.html" class="icon-nav">
+          <span class="icon-nav__icon">
+            <img src="assets/img/icon/icon-donar.png" alt="">
+          </span>
+          <span class="icon-nav__label">Quiero donar</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Contenedor donde se inyecta cada "ventana" (que-es.html, merch.html,
+       etc.) cuando el usuario hace clic en un enlace con [data-window].
+       Ver assets/js/main.js. -->
+  <div class="window-overlay" id="window-overlay" hidden>
+    <div class="window-overlay__slot" id="window-overlay-slot"></div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

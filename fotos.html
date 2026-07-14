@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body>
+
+  <!--
+    NOTA: al igual que las otras páginas, esta ventana se integra como
+    overlay flotante sobre index.html.
+
+    La interactividad (seleccionar sesión, mostrar sus fotos, navegar con
+    ◀ ▶) YA ESTÁ IMPLEMENTADA — ver assets/js/main.js, sección "Lógica de
+    la página Fotos". Va ahí y no en un <script> de este archivo porque
+    cuando esta página se abre como ventana flotante, solo se inyecta el
+    contenido de .window (sin <script>), así que cualquier JS propio de
+    este archivo nunca se ejecutaría en ese caso.
+
+    Las fotos de cada sesión se auto-detectan probando cargar
+    assets/img/fotos-sesiones/<sesión>/01.jpg, 02.jpg, 03.jpg... hasta que
+    una falla — ver assets/img/README.md para la convención de nombres.
+  -->
+  <div class="desktop-backdrop">
+    <section class="window" aria-label="Fotos">
+
+      <!-- Barra de título estilo navegador -->
+      <div class="window__titlebar">
+        <div class="window__menu">
+          <img src="assets/img/icon/window-icon-menu.png" alt="">
+          <img src="assets/img/icon/icon-chevron-down.png" alt="">
+        </div>
+
+        <div class="window__address">
+          <span class="window__address-title">Qué es hola mundo</span>
+        </div>
+
+        <div class="window__actions">
+          <a href="index.html" class="window__action-btn" aria-label="Minimizar">
+            <img src="assets/img/icon/minimizar.svg" alt="">
+          </a>
+          <button class="window__action-btn" aria-label="Maximizar">
+            <img src="assets/img/icon/ampliar.svg" alt="">
+          </button>
+          <a href="index.html" class="window__action-btn" aria-label="Cerrar ventana">
+            <img src="assets/img/icon/cerrar.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <!-- Cuerpo / contenido -->
+      <div class="window__body">
+
+        <h2 class="accordion-title">Contenido</h2>
+
+        <header class="article-header article-header--no-image">
+          <h1 class="article-header__title">Fotos</h1>
+          <p class="fotos-tagline">Momentos que merecen ser vistos.</p>
+          <p class="article-header__desc">Esto es Hola Mundo en acción.</p>
+        </header>
+
+        <div class="fotos-player">
+
+          <!-- Lista de casetes: cada uno representa una sesión de taller
+               (13 en total). Ya NO usa imágenes — es el mismo diseño de
+               "bandeja" que la del TV, así que las 13 se ven consistentes
+               sin depender de arte pendiente en Figma. Cada fila solo
+               tiene un botón ▶ (a modo de "play") que selecciona esa
+               sesión. -->
+          <ul class="cassette-list" aria-label="Álbumes de fotos">
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact is-active">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">1</span>
+                  <span class="fotos-tv__slot-label">Conociendo el mundo digital</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="1" aria-label="Reproducir álbum: Conociendo el mundo digital" aria-pressed="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">2</span>
+                  <span class="fotos-tv__slot-label">Google workspace</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="2" aria-label="Reproducir álbum: Google workspace" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">3</span>
+                  <span class="fotos-tv__slot-label">Diseñar para comunicar</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="3" aria-label="Reproducir álbum: Diseñar para comunicar" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">4</span>
+                  <span class="fotos-tv__slot-label">Crea tu primer contenido</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="4" aria-label="Reproducir álbum: Crea tu primer contenido" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">5</span>
+                  <span class="fotos-tv__slot-label">Datos para la vida diaria</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="5" aria-label="Reproducir álbum: Datos para la vida diaria" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">6</span>
+                  <span class="fotos-tv__slot-label">Sesión 6</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="6" aria-label="Reproducir álbum: Sesión 6" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">7</span>
+                  <span class="fotos-tv__slot-label">Sesión 7</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="7" aria-label="Reproducir álbum: Sesión 7" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">8</span>
+                  <span class="fotos-tv__slot-label">Sesión 8</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="8" aria-label="Reproducir álbum: Sesión 8" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">9</span>
+                  <span class="fotos-tv__slot-label">Sesión 9</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="9" aria-label="Reproducir álbum: Sesión 9" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">10</span>
+                  <span class="fotos-tv__slot-label">Sesión 10</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="10" aria-label="Reproducir álbum: Sesión 10" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">11</span>
+                  <span class="fotos-tv__slot-label">Sesión 11</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="11" aria-label="Reproducir álbum: Sesión 11" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">12</span>
+                  <span class="fotos-tv__slot-label">Sesión 12</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="12" aria-label="Reproducir álbum: Sesión 12" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="fotos-tv__tray fotos-tv__tray--compact">
+                <div class="fotos-tv__slot">
+                  <span class="cassette-item__number">13</span>
+                  <span class="fotos-tv__slot-label">Sesión 13</span>
+                  <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+                </div>
+                <div class="fotos-tv__controls">
+                  <button type="button" class="fotos-control" data-cassette="13" aria-label="Reproducir álbum: Sesión 13" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- TV: se usa la imagen real del marco (SOLO la carcasa+pantalla,
+               SIN la bandeja/casete) y la foto se coloca DETRÁS de ella,
+               encajando en el hueco de pantalla. La bandeja de abajo
+               (casete insertado + controles) es HTML/CSS real, no imagen,
+               y ahora usa el mismo diseño que las filas de la lista, con
+               los 3 controles completos (◀ ■ ▶) para navegar las fotos
+               DENTRO de la sesión activa. -->
+          <div class="fotos-tv">
+
+            <div class="fotos-tv__screen-wrap">
+              <div class="fotos-tv__photo">
+                <img id="fotos-current-photo" src="assets/img/fotos-sesiones/fotos-placeholder-1.png" alt="Foto del grupo seleccionado">
+              </div>
+              <img class="fotos-tv__frame" src="assets/img/fotos-sesiones/fotos-tv-frame-2.png" alt="">
+            </div>
+
+            <div class="fotos-tv__tray">
+              <div class="fotos-tv__slot">
+                <span id="fotos-current-number" class="cassette-item__number">1</span>
+                <span id="fotos-current-label" class="fotos-tv__slot-label">Conociendo el mundo digital</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+
+              <div class="fotos-tv__controls">
+                <button type="button" class="fotos-control" id="fotos-prev" aria-label="Foto anterior">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 18V6l-8.5 6 8.5 6Zm9.5 0V6L12 12l8.5 6Z"/></svg>
+                </button>
+                <button type="button" class="fotos-control fotos-control--decorative" aria-label="Decorativo" tabindex="-1">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+                </button>
+                <button type="button" class="fotos-control" id="fotos-next" aria-label="Foto siguiente">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

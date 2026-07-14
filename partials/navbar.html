@@ -1,0 +1,38 @@
+<!-- partials/navbar.html
+     Navbar de Home. Se carga vía fetch() dentro de #navbar-slot en
+     index.html (ver assets/js/main.js → loadNavbar()). Al ser un
+     fragmento HTML aparte (no una página completa), NO lleva
+     <!DOCTYPE>, <head> ni <body> — solo el <header> en sí.
+
+     Navbar con DOS estados según el ancho de pantalla (ver
+     assets/css/styles.css):
+     - Pantallas grandes: botones con texto completo (.site-header__nav-text)
+     - Pantallas chicas: mismos botones pero solo ícono (.site-header__icon-nav)
+     Ambos viven en el DOM a la vez; el CSS decide cuál se muestra. -->
+<header class="site-header">
+  <div class="site-header__logo">
+    <img src="assets/img/logo.png" alt="Hola Mundo">
+  </div>
+
+  <!-- Versión con texto — visible en pantallas grandes -->
+  <div class="site-header__nav-text">
+    <nav class="site-header__nav" aria-label="Navegación principal">
+      <a href="que-es.html" data-window="que-es.html" class="btn btn--secondary is-active">Qué es hola mundo</a>
+      <a href="equipo.html" data-window="equipo.html" class="btn btn--secondary">Quienes somos</a>
+    </nav>
+    <a href="dona.html" data-window="dona.html" class="btn btn--primary">Quiero donar</a>
+  </div>
+
+  <!-- Versión con solo ícono — visible en pantallas chicas -->
+  <nav class="site-header__icon-nav" aria-label="Navegación principal">
+    <a href="que-es.html" data-window="que-es.html" class="icon-btn icon-btn--secondary is-active" aria-label="Qué es hola mundo" title="Qué es hola mundo">
+      <img src="assets/img/icon/icon-que-es.png" alt="">
+    </a>
+    <a href="equipo.html" data-window="equipo.html" class="icon-btn icon-btn--secondary" aria-label="Quienes somos" title="Quienes somos">
+      <img src="assets/img/icon/icon-equipo.png" alt="">
+    </a>
+    <a href="dona.html" data-window="dona.html" class="icon-btn icon-btn--primary" aria-label="Quiero donar" title="Quiero donar">
+      <img src="assets/img/icon/icon-donar.png" alt="">
+    </a>
+  </nav>
+</header>
