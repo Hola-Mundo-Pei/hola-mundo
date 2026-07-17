@@ -71,7 +71,10 @@ body.page-home {
 
 .home-hero__donate {
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-end;
+  gap: 32px;
   height: 100%;
 }
 
@@ -90,6 +93,20 @@ body.page-home {
     justify-items: center;
     row-gap: 32px;
     column-gap: 24px;
+  }
+
+  /* Igual que .home-nav-list: en desktop es columna simple (alineada a
+     la derecha), pero en móvil pasa a grid de 2 columnas centrado —
+     importante porque este bloque va a crecer a 4 ítems (Donar,
+     Bitácoras, Sponsors, Papelera). */
+  .home-hero__donate {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-content: center;
+    row-gap: 32px;
+    column-gap: 24px;
+    height: auto;
   }
 
   /* En desktop la ilustración se centra con position:absolute (queda

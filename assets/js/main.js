@@ -158,6 +158,36 @@
 
 
 // =================================================================
+// Lógica de la página "Sponsors": clic/tap alterna la descripción
+// =================================================================
+// En desktop el hover ya resalta la tarjeta y muestra la descripción
+// (puro CSS). En celular no hay hover, así que el clic/tap hace lo
+// mismo alternando la clase .is-expanded. Funciona sin importar si la
+// página está standalone o inyectada en el overlay (delegación de
+// eventos sobre document).
+(function () {
+  document.addEventListener('click', function (e) {
+    const card = e.target.closest('.sponsor-card');
+    if (!card) return;
+
+    const isExpanded = card.classList.toggle('is-expanded');
+    card.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+  });
+
+  // Con teclado (Enter / Espacio) también alterna, ya que la tarjeta
+  // tiene role="button" + tabindex="0".
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest && e.target.closest('.sponsor-card');
+    if (!card) return;
+    e.preventDefault();
+    const isExpanded = card.classList.toggle('is-expanded');
+    card.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+  });
+})();
+
+
+// =================================================================
 // Lógica de la página "Fotos": selección de sesión + navegación de fotos
 // =================================================================
 //

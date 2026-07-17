@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <title>Sponsors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body>
+
+  <!--
+    NOTA: al igual que las otras páginas, esta ventana se integra como
+    overlay flotante sobre index.html.
+
+    Interacción de las tarjetas: en desktop, pasar el mouse (:hover)
+    resalta la tarjeta y despliega la descripción. En celular (sin
+    hover), hacer clic/tap alterna la clase .is-expanded (ver
+    assets/js/main.js) — mismo resultado, distinto disparador.
+  -->
+  <div class="desktop-backdrop">
+    <section class="window" aria-label="Sponsors">
+
+      <!-- Barra de título estilo navegador -->
+      <div class="window__titlebar">
+        <div class="window__menu">
+          <img src="assets/img/icon/window-icon-menu.png" alt="">
+          <img src="assets/img/icon/icon-chevron-down.png" alt="">
+        </div>
+
+        <div class="window__address">
+          <span class="window__address-title">Sponsors and Partners</span>
+        </div>
+
+        <div class="window__actions">
+          <a href="index.html" class="window__action-btn" aria-label="Minimizar">
+            <img src="assets/img/icon/minimizar.svg" alt="">
+          </a>
+          <button class="window__action-btn" aria-label="Maximizar">
+            <img src="assets/img/icon/ampliar.svg" alt="">
+          </button>
+          <a href="index.html" class="window__action-btn" aria-label="Cerrar ventana">
+            <img src="assets/img/icon/cerrar.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <!-- Cuerpo / contenido -->
+      <div class="window__body">
+
+        <header class="article-header article-header--no-image">
+          <h1 class="article-header__title">Sponsors</h1>
+          <p class="article-header__desc">Las empresas y organizaciones que hacen posible este proyecto.</p>
+        </header>
+
+        <section class="article-section">
+          <h2 class="accordion-title">Sponsors</h2>
+          <div class="sponsors-grid">
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Frisby — ver descripción">
+              <img src="assets/img/sponsors/Frisby.png" alt="Frisby">
+              <div class="sponsor-card__desc">
+                <p>Frisby es una empresa colombiana de alimentos especializada en restaurantes de servicio rápido, comprometida con brindar productos de alta calidad, innovación y una experiencia cercana a sus clientes en todo el país.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Amarilla Garden — ver descripción">
+              <img src="assets/img/sponsors/Amarilla_Garden.png" alt="Amarilla Garden">
+              <div class="sponsor-card__desc">
+                <p>Amarilla Garden es una empresa de decoración artesanal especializada en la creación de velas, recipientes en concreto y detalles decorativos que aportan calidez, personalidad y estilo a cada espacio.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="IMS Global — ver descripción">
+              <img src="assets/img/sponsors/IMS_GLOBAL_2.png" alt="IMS Global">
+              <div class="sponsor-card__desc">
+                <p>IMS Global SAS es una organización dedicada al desarrollo de soluciones tecnológicas para los sectores pyme, hotelero y telecomunicaciones. Ofreciendo herramientas que más se adapten a sus procesos.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Netvy — ver descripción">
+              <img src="assets/img/sponsors/Netvy.png" alt="Netvy">
+              <div class="sponsor-card__desc">
+                <p>Netvy es una empresa de innovación y transformación digital dedicada al desarrollo de soluciones tecnológicas que impulsan el crecimiento, la eficiencia y la competitividad de empresas y organizaciones.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="To Grow — ver descripción">
+              <img src="assets/img/sponsors/To_Grow.png" alt="To Grow">
+              <div class="sponsor-card__desc">
+                <p>To Grow es una empresa dedicada al fortalecimiento del talento humano y al desarrollo de capacidades, promoviendo el aprendizaje, el liderazgo y la transformación positiva en organizaciones.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Fundación Universitaria del Área Andina — ver descripción">
+              <img src="assets/img/sponsors/Universidade_Areandina.png" alt="Fundación Universitaria del Área Andina">
+              <div class="sponsor-card__desc">
+                <p>Fundación Universitaria del Área Andina es una institución de educación superior que impulsa la excelencia académica, investigación y proyección social, formando profesionales capaces de generar impacto positivo en sus entornos.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="article-section">
+          <h2 class="accordion-title">Partners</h2>
+          <div class="sponsors-grid">
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Global Shapers Community, Hub Pereira — ver descripción">
+              <img src="assets/img/sponsors/Global_Shaper_Community.png" alt="Global Shapers Community - Hub Pereira">
+              <div class="sponsor-card__desc">
+                <p>Global Shapers Community - Hub Pereira, es una iniciativa internacional de jóvenes líderes comprometidos con generar un impacto positivo en sus comunidades mediante proyectos de innovación social, sostenibilidad, educación y desarrollo ciudadano.</p>
+              </div>
+            </div>
+
+            <div class="sponsor-card" tabindex="0" role="button" aria-expanded="false" aria-label="Malabareando las Calles — ver descripción">
+              <img src="assets/img/sponsors/Malabareando_las_calles.png" alt="Malabareando las Calles">
+              <div class="sponsor-card__desc">
+                <p>Malabareando las Calles es una iniciativa cultural y social que utiliza el arte urbano y la creatividad como herramientas para transformar vidas, fortalecer el tejido comunitario y promover oportunidades de desarrollo para niños, jóvenes y familias.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </section>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

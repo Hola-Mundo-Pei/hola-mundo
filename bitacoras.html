@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+  <title>Bitácoras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/window.css">
+</head>
+<body>
+
+  <!--
+    NOTA: al igual que las otras páginas, esta ventana se integra como
+    overlay flotante sobre index.html.
+
+    ⚠️ PENDIENTE: los 15 botones ▶ de abajo tienen href="#" como
+    marcador de posición — hay que reemplazarlos por la URL real del
+    proyecto de cada chico. Busca "TODO-LINK" en este archivo.
+
+    A diferencia de Fotos, estos botones NO usan data-window (no abren
+    una ventana interna de este sitio) — son enlaces normales con
+    target="_blank" que abren la página del proyecto en una pestaña
+    nueva del navegador.
+  -->
+  <div class="desktop-backdrop">
+    <section class="window" aria-label="Bitácoras">
+
+      <!-- Barra de título estilo navegador -->
+      <div class="window__titlebar">
+        <div class="window__menu">
+          <img src="assets/img/icon/window-icon-menu.png" alt="">
+          <img src="assets/img/icon/icon-chevron-down.png" alt="">
+        </div>
+
+        <div class="window__address">
+          <span class="window__address-title">Bitácoras</span>
+        </div>
+
+        <div class="window__actions">
+          <a href="index.html" class="window__action-btn" aria-label="Minimizar">
+            <img src="assets/img/icon/minimizar.svg" alt="">
+          </a>
+          <button class="window__action-btn" aria-label="Maximizar">
+            <img src="assets/img/icon/ampliar.svg" alt="">
+          </button>
+          <a href="index.html" class="window__action-btn" aria-label="Cerrar ventana">
+            <img src="assets/img/icon/cerrar.svg" alt="">
+          </a>
+        </div>
+      </div>
+
+      <!-- Cuerpo / contenido -->
+      <div class="window__body">
+
+        <header class="article-header article-header--no-image">
+          <h1 class="article-header__title">Bitácoras</h1>
+          <p class="fotos-tagline">El trabajo de cada chico, contado por ellos mismos.</p>
+          <p class="article-header__desc">Estas son las páginas web que cada estudiante creó como parte de su proceso en Hola Mundo.</p>
+        </header>
+
+        <h2 class="accordion-title">Paginas Web</h2>
+
+        <ul class="bitacoras-grid" aria-label="Bitácoras de los estudiantes">
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">1</span>
+                <span class="fotos-tv__slot-label" title="Alizon Andrea Palacio Henao">Alizon Andrea Palacio Henao</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/laesenciadelabelleza/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Alizon Andrea Palacio Henao"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">2</span>
+                <span class="fotos-tv__slot-label" title="Angel Oscar Arias Romero">Angel Oscar Arias Romero</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/blue-lock-para-ser-el-mejor-/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Angel Oscar Arias Romero"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">3</span>
+                <span class="fotos-tv__slot-label" title="Angel Samuel Fuentes">Angel Samuel Fuentes</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/animepuntocom/home?authuser=5" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Angel Samuel Fuentes"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">5</span>
+                <span class="fotos-tv__slot-label" title="Celena García">Celena García</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/etakatweirdmiprimerapagina/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Celena García"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">6</span>
+                <span class="fotos-tv__slot-label" title="Cristian Andres Feria">Cristian Andres Feria</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/el-mundo-de-ronny/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Cristian Andres Feria"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">7</span>
+                <span class="fotos-tv__slot-label" title="Gustavo Daniel Rojas">Gustavo Daniel Rojas</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/aprenderugby/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Gustavo Daniel Rojas"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">8</span>
+                <span class="fotos-tv__slot-label" title="Jose Daniel Perez Lopez">Jose Daniel Perez Lopez</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/tonotosestaesmipaginajeje/home" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Jose Daniel Perez Lopez"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">9</span>
+                <span class="fotos-tv__slot-label" title="Maria De Los Angeles">Maria De Los Angeles</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/lamaldicion/home" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Maria De Los Angeles"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">10</span>
+                <span class="fotos-tv__slot-label" title="Matias Mejia Quiceno">Matias Mejia Quiceno</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/el-mati-agricola/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Matias Mejia Quiceno"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">11</span>
+                <span class="fotos-tv__slot-label" title="Pablo José Alvarado">Pablo José Alvarado</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Pablo José Alvarado"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">13</span>
+                <span class="fotos-tv__slot-label" title="Santiago Gilberto Garcia">Santiago Gilberto Garcia</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/mundogamer-santy/home" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Santiago Gilberto Garcia"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">14</span>
+                <span class="fotos-tv__slot-label" title="Stefani Alexandra Lopez">Stefani Alexandra Lopez</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/ollieskete-stefani-lopez/p%C3%A1gina-principal" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Stefani Alexandra Lopez"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">15</span>
+                <span class="fotos-tv__slot-label" title="Victoria Cespedes">Victoria Cespedes</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/aprende-de-la-biologia-marina/home" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Victoria Cespedes"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="fotos-tv__tray fotos-tv__tray--compact">
+              <div class="fotos-tv__slot">
+                <span class="cassette-item__number">16</span>
+                <span class="fotos-tv__slot-label" title="Wilson Wladimir Velasquez">Wilson Wladimir Velasquez</span>
+                <span class="fotos-tv__slot-icon" aria-hidden="true"></span>
+              </div>
+              <div class="fotos-tv__controls">
+                <a href="https://sites.google.com/view/call-of-duty-un-juego-divertid/home" target="_blank" rel="noopener noreferrer" class="fotos-control" aria-label="Abrir la página web de Wilson Wladimir Velasquez"> <!-- TODO-LINK -->
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 6v12l8.5-6L13 6ZM3.5 6v12L12 12 3.5 6Z"/></svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
